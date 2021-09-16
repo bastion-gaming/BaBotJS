@@ -1,0 +1,29 @@
+{
+  "name": "babotjs",
+  "version": "4.0.0",
+  "description": "Bot discord du Bastion basé sur Discord.JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bastion-gaming/BaBotJS.git"
+  },
+  "author": "Azerxim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bastion-gaming/BaBotJS/issues"
+  },
+  "homepage": "https://github.com/bastion-gaming/BaBotJS#readme",
+  "dependencies": {
+    "@discordjs/builders": "^0.6.0",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "discord-api-types": "^0.23.1",
+    "discord.js": "^13.1.0",
+    "node-fetch": "^2.6.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0"
+  }
+}

@@ -34,12 +34,17 @@ module.exports = {
 	memberremove: async function(member, channel) {
 		const dID = member.id;
 		if (member.guild.id == ge.guildID[0]) {
-			const { ID } = await fetch(`http://${api.ip}/users/playerid/${dID}`).then(response => response.json());
-			const { xp } = await fetch(`http://${api.ip}/users/xp/${ID}`).then(response => response.json());
-			const { level } = await fetch(`http://${api.ip}/users/level/${ID}`).then(response => response.json());
+			try {
+				const { ID } = await fetch(`http://${api.ip}/users/playerid/${dID}`).then(response => response.json());
+				const { xp } = await fetch(`http://${api.ip}/users/xp/${ID}`).then(response => response.json());
+				const { level } = await fetch(`http://${api.ip}/users/level/${ID}`).then(response => response.json());
 
-			fetch(`http://${api.ip}/users/xp/${ID}/${-xp}`, { method: 'PUT', headers: headers }).then(response => response.json());
-			fetch(`http://${api.ip}/users/level/${ID}/${-level}`, { method: 'PUT', headers: headers }).then(response => response.json());
+				fetch(`http://${api.ip}/users/xp/${ID}/${-xp}`, { method: 'PUT', headers: headers }).then(response => response.json());
+				fetch(`http://${api.ip}/users/level/${ID}/${-level}`, { method: 'PUT', headers: headers }).then(response => response.json());
+			}
+			catch (error) {
+				console.log(`${ge.bcolors.redb}${error}${ge.bcolors.end}`);
+			}
 		}
 
 		const msg = `**${member.user.username}** nous a quitté, pourtant si jeune...`;

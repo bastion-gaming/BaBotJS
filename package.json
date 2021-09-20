@@ -1,11 +1,8 @@
 {
   "name": "babotjs",
-  "version": "4.0.0",
+  "version": "4.0.5",
   "description": "Bot discord du Bastion basé sur Discord.JS",
   "main": "index.js",
-  "scripts": {
-    "test": "test"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bastion-gaming/BaBotJS.git"

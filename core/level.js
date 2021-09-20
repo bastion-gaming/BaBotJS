@@ -87,11 +87,10 @@ module.exports = {
 	},
 
 	addxp_voc: async function(dID, time) {
-		time = parseInt(time);
 		let xp = 0;
 		let retime = 0;
 		if (time <= 240) {
-			xp = time;
+			xp = ~~(time);
 		}
 		else {
 			retime = ~~((time - 240) / 2);
@@ -138,6 +137,7 @@ module.exports = {
 			return true;
 		}
 		catch (error) {
+			console.log(`${ge.bcolors.redb}${error}${ge.bcolors.end}`);
 			await checkInfo(dID);
 		}
 	},
@@ -145,8 +145,8 @@ module.exports = {
 	checklevelvocal: async function(member) {
 		const dID = member.user.id;
 		const Nom = member.user.username;
-		const channel_vocal = member.guild.channels.fetch(507679074362064916);
 		try {
+			const channel_vocal = member.guild.channels.cache.get(507679074362064916);
 			const { ID } = await fetch(`http://${api.ip}/users/playerid/${dID}`).then(response => response.json());
 			const { xp } = await fetch(`http://${api.ip}/users/xp/${ID}`).then(response => response.json());
 			const { level } = await fetch(`http://${api.ip}/users/level/${ID}`).then(response => response.json());
@@ -173,6 +173,7 @@ module.exports = {
 			return true;
 		}
 		catch (error) {
+			console.log(`${ge.bcolors.redb}${error}${ge.bcolors.end}`);
 			await checkInfo(dID);
 		}
 	},

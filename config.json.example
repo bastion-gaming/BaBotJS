@@ -1,13 +1,13 @@
 {
-	"token": "",
+	"token": "DISCORD TOKEN",
 	"id": {
-		"client": "",
-		"guild": ""
+		"client": "0123456789",
+		"guild": "9876543210"
 	},
 	"api": {
-		"name": "",
-		"version": "",
-		"ip": "",
-		"key": ""
+		"name": "NAME API",
+		"version": "1.0.0",
+		"ip": "0.0.0.0",
+		"key": "API SECURITY KEY"
 	}
 }

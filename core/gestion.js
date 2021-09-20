@@ -99,4 +99,9 @@ module.exports = {
 		const { discord_id } = await fetch(`http://${api.ip}/users/${PlayerID}`).then(response => response.json());
 		return discord_id;
 	},
+
+	getPlayerID: async function(dID) {
+		const { ID } = await fetch(`http://${api.ip}/users/playerid/${dID}`).then(response => response.json());
+		return ID;
+	},
 };

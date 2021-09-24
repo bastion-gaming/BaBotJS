@@ -1,5 +1,6 @@
 const ge = require('../core/gestion');
 const lvl = require('../core/level');
+const stats = require('../core/stats');
 
 module.exports = {
 	name: 'messageReactionAdd',
@@ -17,6 +18,9 @@ module.exports = {
 		if (ge.guildID.includes(String(guild.id))) {
 			await lvl.addxp(ID, 1);
 			await lvl.addreaction(ID, 1);
+		}
+		if (!reaction.message.author.bot) {
+			await stats.add('reaction');
 		}
 	},
 };

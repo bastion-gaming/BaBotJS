@@ -14,8 +14,9 @@ const guildID = [
 	'478003352551030796',
 ];
 
+// ===============================================================
 module.exports = {
-	prefixs: ['!', '/', '*', '-', '§', '?'],
+	prefixs: ['!', '/', '*', '-', '§', '?', '.', '$', ':', ';'],
 	guildID: guildID,
 	rolesID: rolesID,
 	admin: 0,
@@ -40,10 +41,6 @@ module.exports = {
 		'purpleb': '\033[1;35m',
 		'lightblue': '\033[0;36m',
 		'lightblueb': '\033[1;36m',
-		'OK': '\033[92m',
-		'WARNING': '\033[93m',
-		'FAIL': '\033[91m',
-		'RESET': '\033[0m',
 	},
 
 	permission: function(interaction, grade) {

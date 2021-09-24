@@ -40,9 +40,9 @@ module.exports = {
 				return 'Le nom de l\'auteur est mal rempli';
 			}
 		}
-		const emb = new MessageEmbed().setTitle('Citation de Kaamelott').setColor('#922222');
+		const emb = new MessageEmbed().setTitle(`Citation de _${auteur_c}_`).setColor('#922222');
 		emb.setDescription(citation);
-		emb.setAuthor(`Auteur: ${auteur_c}`);
+		emb.setAuthor('Module Extra: Kaamelott');
 		return ({ embeds: [emb] });
 	},
 };

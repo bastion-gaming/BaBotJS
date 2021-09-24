@@ -1,5 +1,6 @@
 const ge = require('../core/gestion');
 const lvl = require('../core/level');
+const stats = require('../core/stats');
 
 module.exports = {
 	name: 'messageCreate',
@@ -15,6 +16,9 @@ module.exports = {
 				if (ge.guildID.includes(String(message.guild.id))) {
 					await lvl.xpmsg(message);
 					await lvl.checklevel(message);
+				}
+				if (!message.author.bot) {
+					await stats.add('msg');
 				}
 			}
 			catch (error) {

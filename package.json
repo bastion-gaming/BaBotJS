@@ -1,6 +1,6 @@
 {
   "name": "babotjs",
-  "version": "4.0.6",
+  "version": "4.1.22",
   "description": "Bot discord du Bastion basé sur Discord.JS",
   "main": "index.js",
   "repository": {
@@ -16,9 +16,9 @@
   "dependencies": {
     "@discordjs/builders": "^0.6.0",
     "@discordjs/rest": "^0.1.0-canary.0",
-    "discord-api-types": "^0.23.1",
+    "discord-api-types": "^0.20.2",
     "discord.js": "^13.1.0",
-    "node-fetch": "^2.6.2"
+    "node-fetch": "^2.6.5"
   },
   "devDependencies": {
     "eslint": "^7.32.0"

@@ -29,6 +29,6 @@ module.exports = {
 		}
 		const emb = new MessageEmbed().setTitle('Message de Babot').setColor('#922222');
 		emb.setDescription(desc);
-		await interaction.reply({ embeds: [emb] });
+		await interaction.reply({ embeds: [emb], ephemeral: true });
 	},
 };

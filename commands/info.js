@@ -22,11 +22,11 @@ module.exports = {
 		const myUser = interaction.options.getMentionable('nom');
 		if (myUser == null) {
 			dID = interaction.user.id;
-			myName = interaction.user.username;
+			myName = interaction.user;
 		}
 		else {
 			dID = myUser.user.id;
-			myName = myUser.user.username;
+			myName = myUser.user;
 		}
 		if (lvl.checkInfo(dID) == false) {
 			await ge.addrole(myUser, 'Nouveau');
@@ -37,37 +37,45 @@ module.exports = {
 		const { godchilds } = await fetch(`http://${api.ip}/users/godchilds/${ID}`).then(response => response.json());
 		const { nbgodchilds } = await fetch(`http://${api.ip}/users/godchilds/count/${ID}`).then(response => response.json());
 		const { discord_id } = await fetch(`http://${api.ip}/users/${godparent}`).then(response => response.json());
-		const parrain = interaction.guild.members.cache.find(user => user.id === discord_id);
+		let parrain = interaction.guild.members.cache.find(user => user.id === discord_id);
 
 		const emb = new MessageEmbed().setTitle('Informations')
 			.setColor('#d1d7d8')
-			.setDescription(`**Utilisateur:** ${myName}`);
+			.setDescription(`**Utilisateur** ${myName}`);
 
 		if (ge.guildID.includes(String(interaction.guildId))) {
 			// Niveaux part
 			palier = lvl.lvlPalier(level);
-			desc = 'XP: `' + `${xp}/${palier}` + '`\n';
-			desc += 'Messages: `' + `${nbmsg}` + '`\n';
-			desc += 'Réactions: `' + `${nbreaction}` + '`\n';
-			emb.addField(`**_Niveau_ : ${level}**`, desc);
+			desc = '`' + `${xp}/${palier}` + '` XP\n';
+			desc += '`' + `${nbmsg}` + '` Messages\n';
+			desc += '`' + `${nbreaction}` + '` Reactions\n';
+			emb.addField(`**_Niveau ${level}_**`, desc);
 
 			// Parrainage
 			if (godparent != 0) {
-				desc = `\nParrain: ${parrain.user}`;
+				if (parrain == null) {
+					desc = `\nParrain <@${discord_id}>`;
+				}
+				else {
+					desc = `\nParrain ${parrain.user}`;
+				}
 			}
 			else {
-				desc = '\nParain: `None`';
+				desc = '\nParain `Aucun`';
 			}
 			if (nbgodchilds != 0) {
 				if (nbgodchilds > 1) {
 					sV = 's';
 				}
-				desc += `\nFilleul${sV} ` + '`' + `x${nbgodchilds}` + '`:';
+				desc += `\nFilleul${sV} ` + '`' + `x${nbgodchilds}` + '`';
 				let godchildMember;
 				for (const filleul of godchilds) {
 					godchildMember = interaction.guild.members.cache.find(user => user.id === filleul['discord_id']);
 					if (godchildMember != null) {
-						desc += `\n${godchildMember}`;
+						desc += `\n• ${godchildMember}`;
+					}
+					else {
+						desc += `\n• <@${filleul['discord_id']}>`;
 					}
 				}
 			}

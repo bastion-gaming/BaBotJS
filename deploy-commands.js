@@ -21,7 +21,7 @@ const rest = new REST({ version: '9' }).setToken(token);
 			{ body: commands },
 		);
 
-		console.log('Successfully registered application commands.');
+		console.log('Commandes d\'application enregistrées avec succès.');
 	}
 	catch (error) {
 		console.error(error);

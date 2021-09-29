@@ -49,7 +49,7 @@ module.exports = {
 		}
 		else if (interaction.options.getSubcommand() === 'reaction') {
 			adresse = `reaction/${adresse}`;
-			title = 'Classement en fonction des réations';
+			title = 'Classement en fonction des réactions';
 		}
 		else {
 			adresse = `xp/${adresse}`;

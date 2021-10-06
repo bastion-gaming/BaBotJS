@@ -12,11 +12,16 @@ module.exports = {
 				console.error('Une erreur s\'est produite lors de la récupération du message:', error);
 			}
 		}
-		const ID = user.id;
-		const guild = reaction.message.guild;
-		if (ge.guildID.includes(String(guild.id))) {
-			await lvl.addxp(ID, -1);
-			await lvl.addreaction(ID, -1);
+		try {
+			const ID = user.id;
+			const guild = reaction.message.guild;
+			if (ge.guildID.includes(String(guild.id))) {
+				await lvl.addxp(ID, -1);
+				await lvl.addreaction(ID, -1);
+			}
+		}
+		catch (error) {
+			console.log(`${ge.bcolors.redb}${error}${ge.bcolors.end}`);
 		}
 	},
 };

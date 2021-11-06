@@ -12,14 +12,15 @@ module.exports = {
 			const channel_regle = member.guild.rulesChannel;
 			const dID = member.id;
 			const { error } = await fetch(`http://${api.ip}/users/playerid/${dID}`).then(response => response.json());
+			let msg = '';
+			msg = `:blue_square: Bienvenue ${member.user.username} sur Bastion! :blue_square: \nNous sommes ravis que tu aies rejoint notre communauté !`;
+			msg += `\n\nMerci de lire les règles et le fonctionnement du serveur dans le salon ${channel_regle.name}`;
+			msg += '\nAjoute aussi ton parrain avec `!parrain @pseudo`\n▬▬▬▬▬▬▬▬▬▬▬▬';
 			if (error == 404) {
 				fetch(`http://${api.ip}/users/create/?discord_id=${dID}`, { method: 'POST', headers: headers }).then(response => response.json());
-				let msg = `:blue_square: Bienvenue ${member.user.username} sur Bastion! :blue_square: \nNous sommes ravis que tu aies rejoint notre communauté !`;
-				msg += `\n\nMerci de lire les règles et le fonctionnement du serveur dans le salon ${channel_regle.name}`;
-				msg += '\nAjoute aussi ton parrain avec `!parrain @pseudo`\n▬▬▬▬▬▬▬▬▬▬▬▬';
 			}
 			else {
-				const msg = `▬▬▬▬▬▬ Bon retour parmis nous ! ${member.user.username} ▬▬▬▬▬▬`;
+				msg = `▬▬▬▬▬▬ Bon retour parmis nous ! ${member.user.username} ▬▬▬▬▬▬`;
 			}
 			await ge.addrole(member, 'Nouveau');
 			await channel.send(msg);

@@ -89,18 +89,24 @@ module.exports = {
 	addxp_voc: async function(dID, time) {
 		let xp = 0;
 		let retime = 0;
-		if (time <= 240) {
+		if (time <= 180) {
+			// 60 XP par heure
 			xp = ~~(time);
 		}
+		else if (time <= 240) {
+			// 30 XP par heure
+			retime = time - 180;
+			xp = ~~(180 + (retime / 2));
+		}
+		else if (time <= 300) {
+			// 15 XP par heure
+			retime = time - 240;
+			xp = ~~(180 + 30 + (retime / 4));
+		}
 		else {
-			retime = ~~((time - 240) / 2);
-			if (retime <= 30) {
-				xp = 240 + retime;
-			}
-			else {
-				retime = ~~((retime - 30) / 4);
-				xp = 270 + retime;
-			}
+			// 6 XP par heure
+			retime = time - 300;
+			xp = ~~(180 + 30 + 15 + (retime / 10));
 		}
 		await addxp(dID, xp);
 	},

@@ -27,7 +27,7 @@ async function addreaction(dID, nb) {
 
 function lvlPalier(lvl) {
 	if (lvl <= 0) {
-		return 10;
+		return 1;
 	}
 	else {
 		const palier = ~~(30 * (lvl) ** (2.5));

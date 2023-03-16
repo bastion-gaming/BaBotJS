@@ -12,6 +12,22 @@ function fileExist(path) {
 	});
 }
 
+function format_date(format = 'FR') {
+	let date_ob = new Date(Date.now());
+	let date = date_ob.getDate();
+	let month = date_ob.getMonth() + 1;
+	let year = date_ob.getFullYear();
+	if (String(month).length == 1) {
+		month = `0${month}`;
+	}
+	if (format == 'FR') {
+		return `${date}-${month}-${year}`;
+	}
+	else {
+		return `${year}-${month}-${date}`;
+	}
+}
+
 function fileData(path) {
 	try {
 		const data = fs.readFileSync(path, 'utf8');
@@ -59,5 +75,9 @@ module.exports = {
 
 	delete: function(path) {
 		return fileDelete(path);
+	},
+
+	date: function() {
+		return format_date();
 	},
 };

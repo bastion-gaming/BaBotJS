@@ -22,7 +22,7 @@ module.exports = {
 				const afkchannel = guild.afkChannel;
 				let timember, mytime;
 				timember = new Date();
-				mytime = `${timember.getDay()} ${timember.getMonth()} ${timember.getFullYear()} | ${timember.getHours()}:${timember.getMinutes()}:${~~(timember.getMilliseconds() / 10)} |`;
+				mytime = `${timember.getDay()}/${timember.getMonth()}/${timember.getFullYear()} | ${timember.getHours()}:${timember.getMinutes()}:${~~(timember.getMilliseconds() / 10)} |`;
 
 				// Voice XP
 				if (after.channel != null && !(member.user.username in on_vocal) && after.channel.id != afkchannel.id) {
